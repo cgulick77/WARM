@@ -21,7 +21,7 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        ShipLook();
+      
     }
 
     public void MoveShip(Vector2 input)
@@ -33,24 +33,5 @@ public class PlayerController : MonoBehaviour
         playerController.Move(transform.TransformDirection(moveDirection * playerSpeed * Time.deltaTime));
     }
 
-    public void ShipAim(Vector2 input)
-    {
-        Vector3 playerMouse  = Vector3.zero;
-        playerMouse.x = input.x;
-        playerMouse.y = input.y;
-
-        shipOuter.transform.LookAt(playerMouse);
-        
-    
-       //Vector3 mouseDirection = Vector3.RotateTowards(shipOuter.transform.forward, playerMouse, 1f, 0.0f);
-    }
-
-    public void ShipLook()
-    {
-        //Vector3 mousePos = Input.mousePosition;
-
-        //shipOuter.transform.LookAt(mousePos);
-    }
-
-    
+   
 }

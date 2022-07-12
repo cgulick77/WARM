@@ -193,6 +193,7 @@ GameObject:
   m_Component:
   - component: {fileID: 361294401}
   - component: {fileID: 361294402}
+  - component: {fileID: 361294403}
   m_Layer: 0
   m_Name: Test Chracter Sprite Outer
   m_TagString: Untagged
@@ -265,6 +266,18 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &361294403
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 361294400}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a9ae3c5b95dff70459232aef625fcb30, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &472745601
 GameObject:
   m_ObjectHideFlags: 0
