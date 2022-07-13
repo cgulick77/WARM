@@ -25,7 +25,7 @@ public class Inputs : MonoBehaviour
     }
     void LateUpdate() 
     {
-        shipAim.ShipLook(shipActions.ShipAim.ReadValue<Vector2>());
+        //shipAim.ShipLook(shipActions.ShipAim.ReadValue<Vector2>());
     }
     private void OnEnable() 
     {

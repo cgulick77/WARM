@@ -12,6 +12,8 @@ public class PlayerController : MonoBehaviour
     public float playerSpeed;
     public GameObject shipOuter;
 
+    public float generalSpeed;
+
     void Start() 
     {
         playerController = GetComponent<CharacterController>();
@@ -21,7 +23,7 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-      
+      playerController.Move(Vector3.down * generalSpeed * Time.deltaTime);
     }
 
     public void MoveShip(Vector2 input)
