@@ -8,13 +8,13 @@ public class Inputs : MonoBehaviour
     private PlayerInput playerInput;
     private PlayerInput.PlayerShipActions shipActions;
     private PlayerController playerController;
-    private ShipAim shipAim;
+    
      void Awake() 
     {
         playerInput = new PlayerInput();
         shipActions = playerInput.PlayerShip;
         playerController = GetComponent<PlayerController>();
-        shipAim = GetComponent<ShipAim>();
+        
     }
     // Update is called once per frame
     void FixedUpdate()

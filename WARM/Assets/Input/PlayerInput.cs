@@ -33,6 +33,14 @@ public class @PlayerInput : IInputActionCollection, IDisposable
                     ""expectedControlType"": ""Vector2"",
                     ""processors"": """",
                     ""interactions"": """"
+                },
+                {
+                    ""name"": ""ShipShoot"",
+                    ""type"": ""Button"",
+                    ""id"": ""922e31c7-309f-4fb2-8ddb-2733931290af"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
                 }
             ],
             ""bindings"": [
@@ -101,6 +109,17 @@ public class @PlayerInput : IInputActionCollection, IDisposable
                     ""action"": ""ShipAim"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""b8681a7d-0a94-426e-a730-bf4445566ebf"",
+                    ""path"": ""<Mouse>/rightButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ShipShoot"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -111,6 +130,7 @@ public class @PlayerInput : IInputActionCollection, IDisposable
         m_PlayerShip = asset.FindActionMap("PlayerShip", throwIfNotFound: true);
         m_PlayerShip_ShipMovement = m_PlayerShip.FindAction("ShipMovement", throwIfNotFound: true);
         m_PlayerShip_ShipAim = m_PlayerShip.FindAction("ShipAim", throwIfNotFound: true);
+        m_PlayerShip_ShipShoot = m_PlayerShip.FindAction("ShipShoot", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -162,12 +182,14 @@ public class @PlayerInput : IInputActionCollection, IDisposable
     private IPlayerShipActions m_PlayerShipActionsCallbackInterface;
     private readonly InputAction m_PlayerShip_ShipMovement;
     private readonly InputAction m_PlayerShip_ShipAim;
+    private readonly InputAction m_PlayerShip_ShipShoot;
     public struct PlayerShipActions
     {
         private @PlayerInput m_Wrapper;
         public PlayerShipActions(@PlayerInput wrapper) { m_Wrapper = wrapper; }
         public InputAction @ShipMovement => m_Wrapper.m_PlayerShip_ShipMovement;
         public InputAction @ShipAim => m_Wrapper.m_PlayerShip_ShipAim;
+        public InputAction @ShipShoot => m_Wrapper.m_PlayerShip_ShipShoot;
         public InputActionMap Get() { return m_Wrapper.m_PlayerShip; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -183,6 +205,9 @@ public class @PlayerInput : IInputActionCollection, IDisposable
                 @ShipAim.started -= m_Wrapper.m_PlayerShipActionsCallbackInterface.OnShipAim;
                 @ShipAim.performed -= m_Wrapper.m_PlayerShipActionsCallbackInterface.OnShipAim;
                 @ShipAim.canceled -= m_Wrapper.m_PlayerShipActionsCallbackInterface.OnShipAim;
+                @ShipShoot.started -= m_Wrapper.m_PlayerShipActionsCallbackInterface.OnShipShoot;
+                @ShipShoot.performed -= m_Wrapper.m_PlayerShipActionsCallbackInterface.OnShipShoot;
+                @ShipShoot.canceled -= m_Wrapper.m_PlayerShipActionsCallbackInterface.OnShipShoot;
             }
             m_Wrapper.m_PlayerShipActionsCallbackInterface = instance;
             if (instance != null)
@@ -193,6 +218,9 @@ public class @PlayerInput : IInputActionCollection, IDisposable
                 @ShipAim.started += instance.OnShipAim;
                 @ShipAim.performed += instance.OnShipAim;
                 @ShipAim.canceled += instance.OnShipAim;
+                @ShipShoot.started += instance.OnShipShoot;
+                @ShipShoot.performed += instance.OnShipShoot;
+                @ShipShoot.canceled += instance.OnShipShoot;
             }
         }
     }
@@ -201,5 +229,6 @@ public class @PlayerInput : IInputActionCollection, IDisposable
     {
         void OnShipMovement(InputAction.CallbackContext context);
         void OnShipAim(InputAction.CallbackContext context);
+        void OnShipShoot(InputAction.CallbackContext context);
     }
 }
