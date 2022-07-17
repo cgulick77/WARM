@@ -6,7 +6,7 @@ using UnityEngine.InputSystem;
 public class Inputs : MonoBehaviour
 {
     private PlayerInput playerInput;
-    private PlayerInput.PlayerShipActions shipActions;
+    public PlayerInput.PlayerShipActions shipActions;
     private PlayerController playerController;
     
      void Awake() 
