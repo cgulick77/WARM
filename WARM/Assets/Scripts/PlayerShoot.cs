@@ -9,6 +9,7 @@ public class PlayerShoot : MonoBehaviour
     private Inputs inputs;
     [SerializeField]
     private float rateOfFire;
+    public GameObject bulletSpawn;
 
     
     // Start is called before the first frame update
@@ -37,7 +38,7 @@ public class PlayerShoot : MonoBehaviour
     IEnumerator ShootBasic()
     {
         yield return new WaitForSeconds(rateOfFire);
-        Instantiate(bullet, transform.position, transform.rotation);
+        Instantiate(bullet, bulletSpawn.transform.position, bulletSpawn.transform.rotation);
          
     }
 }

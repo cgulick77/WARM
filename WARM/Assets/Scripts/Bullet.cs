@@ -27,5 +27,13 @@ public class Bullet : MonoBehaviour
         StopAllCoroutines();
     }
 
+    private void OnTriggerEnter2D(Collider2D other) {
+        if(other.CompareTag("Ore"))
+        {
+             Destroy(gameObject);
+        }
+       
+    }
+
     
 }
