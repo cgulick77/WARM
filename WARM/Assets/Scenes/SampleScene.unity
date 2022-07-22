@@ -1923,7 +1923,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   oreMaterial: {fileID: 7116285030848883933, guid: 53931239db968cd4fb65aa29f9095764, type: 3}
-  oreHealth: 100
+  oreHealth: 5
+  oreAmmount: 5
+  x: 0
 --- !u!212 &2123260232
 SpriteRenderer:
   m_ObjectHideFlags: 0

@@ -5,13 +5,13 @@ using UnityEngine;
 public class OreDestroy : MonoBehaviour
 {
     public GameObject oreMaterial;
-    public float oreHealth;
+    public float oreHealth, startingHealth;
     public int oreAmmount = 5, x;
     private Vector2 direction;
     // Start is called before the first frame update
     void Start()
     {
-        oreHealth = 50f;
+        oreHealth = startingHealth;
 
     }
 
@@ -20,32 +20,34 @@ public class OreDestroy : MonoBehaviour
     {
         if (oreHealth == 0)
         {
-            
+            DropMaterials();
             Destroy(gameObject);
         }
-        else if (oreHealth <= 10)
-        {
-            //DropMaterials();
-        }
+        
+      
+           
+       
     }
     
      void OnTriggerEnter2D(Collider2D col) {
         if(col.CompareTag("BasicBullet"))
         {
             oreHealth -= 10;
-            Debug.Log("Hit");
+            //Debug.Log("Hit");
         }
      }
 
     void DropMaterials()
     {
-       direction = Random.insideUnitCircle.normalized; // Random Direction
+       //direction = Random.insideUnitCircle.normalized; // Random Direction
+        StartCoroutine(SpawnMats());
 
-        while (x != oreAmmount)
-        {
-            Instantiate(oreMaterial, direction, transform.rotation);
-            x++;
-        }
-        
+    }
+
+    IEnumerator SpawnMats()
+    {
+        Instantiate(oreMaterial, transform.position, transform.rotation);
+        yield return new WaitForSeconds(.1f);
+        StopCoroutine(SpawnMats());
     }
 }
