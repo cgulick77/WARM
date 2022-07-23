@@ -41,6 +41,38 @@ public class @PlayerInput : IInputActionCollection, IDisposable
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """"
+                },
+                {
+                    ""name"": ""OpenShipUi"",
+                    ""type"": ""Button"",
+                    ""id"": ""07687914-b834-4de4-89f2-358d8ae935c1"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
+                    ""name"": ""UiOre1"",
+                    ""type"": ""Button"",
+                    ""id"": ""d7734e4f-6bda-4c5c-a39e-7d864f7b39e4"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
+                    ""name"": ""UiOre2"",
+                    ""type"": ""Button"",
+                    ""id"": ""3bde35ee-4ee2-467e-a980-4870b1f45f9f"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
+                    ""name"": ""UiOre3"",
+                    ""type"": ""Button"",
+                    ""id"": ""483704eb-2440-4815-ad2d-5c16baa9201c"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
                 }
             ],
             ""bindings"": [
@@ -120,6 +152,50 @@ public class @PlayerInput : IInputActionCollection, IDisposable
                     ""action"": ""ShipShoot"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""ef229f63-7fe3-4fc5-8f4a-e693188555eb"",
+                    ""path"": ""<Keyboard>/space"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""OpenShipUi"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""3c58558c-29f1-463a-9332-81a39ce57b96"",
+                    ""path"": ""<Keyboard>/1"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""UiOre1"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""2560cd7e-3504-41d9-9852-99a877723623"",
+                    ""path"": ""<Keyboard>/2"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""UiOre2"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""cfad53c8-8aad-43b2-82c6-c061be6e0073"",
+                    ""path"": ""<Keyboard>/3"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""UiOre3"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -131,6 +207,10 @@ public class @PlayerInput : IInputActionCollection, IDisposable
         m_PlayerShip_ShipMovement = m_PlayerShip.FindAction("ShipMovement", throwIfNotFound: true);
         m_PlayerShip_ShipAim = m_PlayerShip.FindAction("ShipAim", throwIfNotFound: true);
         m_PlayerShip_ShipShoot = m_PlayerShip.FindAction("ShipShoot", throwIfNotFound: true);
+        m_PlayerShip_OpenShipUi = m_PlayerShip.FindAction("OpenShipUi", throwIfNotFound: true);
+        m_PlayerShip_UiOre1 = m_PlayerShip.FindAction("UiOre1", throwIfNotFound: true);
+        m_PlayerShip_UiOre2 = m_PlayerShip.FindAction("UiOre2", throwIfNotFound: true);
+        m_PlayerShip_UiOre3 = m_PlayerShip.FindAction("UiOre3", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -183,6 +263,10 @@ public class @PlayerInput : IInputActionCollection, IDisposable
     private readonly InputAction m_PlayerShip_ShipMovement;
     private readonly InputAction m_PlayerShip_ShipAim;
     private readonly InputAction m_PlayerShip_ShipShoot;
+    private readonly InputAction m_PlayerShip_OpenShipUi;
+    private readonly InputAction m_PlayerShip_UiOre1;
+    private readonly InputAction m_PlayerShip_UiOre2;
+    private readonly InputAction m_PlayerShip_UiOre3;
     public struct PlayerShipActions
     {
         private @PlayerInput m_Wrapper;
@@ -190,6 +274,10 @@ public class @PlayerInput : IInputActionCollection, IDisposable
         public InputAction @ShipMovement => m_Wrapper.m_PlayerShip_ShipMovement;
         public InputAction @ShipAim => m_Wrapper.m_PlayerShip_ShipAim;
         public InputAction @ShipShoot => m_Wrapper.m_PlayerShip_ShipShoot;
+        public InputAction @OpenShipUi => m_Wrapper.m_PlayerShip_OpenShipUi;
+        public InputAction @UiOre1 => m_Wrapper.m_PlayerShip_UiOre1;
+        public InputAction @UiOre2 => m_Wrapper.m_PlayerShip_UiOre2;
+        public InputAction @UiOre3 => m_Wrapper.m_PlayerShip_UiOre3;
         public InputActionMap Get() { return m_Wrapper.m_PlayerShip; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -208,6 +296,18 @@ public class @PlayerInput : IInputActionCollection, IDisposable
                 @ShipShoot.started -= m_Wrapper.m_PlayerShipActionsCallbackInterface.OnShipShoot;
                 @ShipShoot.performed -= m_Wrapper.m_PlayerShipActionsCallbackInterface.OnShipShoot;
                 @ShipShoot.canceled -= m_Wrapper.m_PlayerShipActionsCallbackInterface.OnShipShoot;
+                @OpenShipUi.started -= m_Wrapper.m_PlayerShipActionsCallbackInterface.OnOpenShipUi;
+                @OpenShipUi.performed -= m_Wrapper.m_PlayerShipActionsCallbackInterface.OnOpenShipUi;
+                @OpenShipUi.canceled -= m_Wrapper.m_PlayerShipActionsCallbackInterface.OnOpenShipUi;
+                @UiOre1.started -= m_Wrapper.m_PlayerShipActionsCallbackInterface.OnUiOre1;
+                @UiOre1.performed -= m_Wrapper.m_PlayerShipActionsCallbackInterface.OnUiOre1;
+                @UiOre1.canceled -= m_Wrapper.m_PlayerShipActionsCallbackInterface.OnUiOre1;
+                @UiOre2.started -= m_Wrapper.m_PlayerShipActionsCallbackInterface.OnUiOre2;
+                @UiOre2.performed -= m_Wrapper.m_PlayerShipActionsCallbackInterface.OnUiOre2;
+                @UiOre2.canceled -= m_Wrapper.m_PlayerShipActionsCallbackInterface.OnUiOre2;
+                @UiOre3.started -= m_Wrapper.m_PlayerShipActionsCallbackInterface.OnUiOre3;
+                @UiOre3.performed -= m_Wrapper.m_PlayerShipActionsCallbackInterface.OnUiOre3;
+                @UiOre3.canceled -= m_Wrapper.m_PlayerShipActionsCallbackInterface.OnUiOre3;
             }
             m_Wrapper.m_PlayerShipActionsCallbackInterface = instance;
             if (instance != null)
@@ -221,6 +321,18 @@ public class @PlayerInput : IInputActionCollection, IDisposable
                 @ShipShoot.started += instance.OnShipShoot;
                 @ShipShoot.performed += instance.OnShipShoot;
                 @ShipShoot.canceled += instance.OnShipShoot;
+                @OpenShipUi.started += instance.OnOpenShipUi;
+                @OpenShipUi.performed += instance.OnOpenShipUi;
+                @OpenShipUi.canceled += instance.OnOpenShipUi;
+                @UiOre1.started += instance.OnUiOre1;
+                @UiOre1.performed += instance.OnUiOre1;
+                @UiOre1.canceled += instance.OnUiOre1;
+                @UiOre2.started += instance.OnUiOre2;
+                @UiOre2.performed += instance.OnUiOre2;
+                @UiOre2.canceled += instance.OnUiOre2;
+                @UiOre3.started += instance.OnUiOre3;
+                @UiOre3.performed += instance.OnUiOre3;
+                @UiOre3.canceled += instance.OnUiOre3;
             }
         }
     }
@@ -230,5 +342,9 @@ public class @PlayerInput : IInputActionCollection, IDisposable
         void OnShipMovement(InputAction.CallbackContext context);
         void OnShipAim(InputAction.CallbackContext context);
         void OnShipShoot(InputAction.CallbackContext context);
+        void OnOpenShipUi(InputAction.CallbackContext context);
+        void OnUiOre1(InputAction.CallbackContext context);
+        void OnUiOre2(InputAction.CallbackContext context);
+        void OnUiOre3(InputAction.CallbackContext context);
     }
 }

@@ -6,6 +6,7 @@ TagManager:
   tags:
   - BasicBullet
   - Ore
+  - BasicOre
   layers:
   - Default
   - TransparentFX

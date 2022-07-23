@@ -28,6 +28,38 @@
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": ""
+                },
+                {
+                    "name": "OpenShipUi",
+                    "type": "Button",
+                    "id": "07687914-b834-4de4-89f2-358d8ae935c1",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
+                    "name": "UiOre1",
+                    "type": "Button",
+                    "id": "d7734e4f-6bda-4c5c-a39e-7d864f7b39e4",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
+                    "name": "UiOre2",
+                    "type": "Button",
+                    "id": "3bde35ee-4ee2-467e-a980-4870b1f45f9f",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
+                    "name": "UiOre3",
+                    "type": "Button",
+                    "id": "483704eb-2440-4815-ad2d-5c16baa9201c",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
                 }
             ],
             "bindings": [
@@ -105,6 +137,50 @@
                     "processors": "",
                     "groups": "",
                     "action": "ShipShoot",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "ef229f63-7fe3-4fc5-8f4a-e693188555eb",
+                    "path": "<Keyboard>/space",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "OpenShipUi",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "3c58558c-29f1-463a-9332-81a39ce57b96",
+                    "path": "<Keyboard>/1",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "UiOre1",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "2560cd7e-3504-41d9-9852-99a877723623",
+                    "path": "<Keyboard>/2",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "UiOre2",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "cfad53c8-8aad-43b2-82c6-c061be6e0073",
+                    "path": "<Keyboard>/3",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "UiOre3",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

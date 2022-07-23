@@ -18,14 +18,13 @@ public class PlayerMaterialManager : MonoBehaviour
         
     }
     private void OnTriggerEnter(Collider other) {
-        // if (other.CompareTag(BulletType))
-        // {
-        //     switch(BulletType) 
-        //     {
-        //         case "BasicOre":
-        //         BasicOres += 5;
-        //         break;
-        //     }
-        // }
+       
+            switch(other.tag) 
+            {
+                case "BasicOre":
+                BasicOres += 5;
+                break;
+            }
+        
     }
 }
