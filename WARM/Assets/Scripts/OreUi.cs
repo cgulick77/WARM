@@ -44,9 +44,11 @@ public class OreUi : MonoBehaviour
                 }
                 else
                 {
-                    Indicator_1.SetActive(true);
-                    Indicator_2.SetActive(false);
-                    Indicator_3.SetActive(false);
+                    SetIndicators(true,false,false);
+
+                    // Indicator_1.SetActive(true);
+                    // Indicator_2.SetActive(false);
+                    // Indicator_3.SetActive(false);
                 }
         }
         if(inputs.shipActions.UiOre2.triggered)
@@ -57,9 +59,8 @@ public class OreUi : MonoBehaviour
                 }
                 else
                 {
-                    Indicator_2.SetActive(true);
-                    Indicator_1.SetActive(false);
-                    Indicator_3.SetActive(false);
+                    SetIndicators(false,true,false);
+
                 }
         }
         if(inputs.shipActions.UiOre3.triggered)
@@ -70,9 +71,8 @@ public class OreUi : MonoBehaviour
                 }
                 else
                 {
-                    Indicator_3.SetActive(true);
-                    Indicator_2.SetActive(false);
-                    Indicator_1.SetActive(false);
+                    SetIndicators(false,false,true);
+                    
                 }
         }
         }
@@ -81,10 +81,20 @@ public class OreUi : MonoBehaviour
        
         
     }
+
+    //Turns off all the indicators
      void SetIndicatorsOff()
         {
             Indicator_1.SetActive(false);
             Indicator_2.SetActive(false);
             Indicator_3.SetActive(false);
         }
+
+    void SetIndicators(bool Ind1, bool Ind2, bool Ind3)
+    {
+        Indicator_1.SetActive(Ind1);
+        Indicator_2.SetActive(Ind2);
+        Indicator_3.SetActive(Ind3);
+    }
+    
 }

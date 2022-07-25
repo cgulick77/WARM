@@ -6,6 +6,7 @@ public class PlayerMaterialManager : MonoBehaviour
 {
     private string BulletType;
     public int BasicOres;
+    public int BasicOreBullet;
     // Start is called before the first frame update
     void Start()
     {
