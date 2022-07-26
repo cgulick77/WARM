@@ -5,8 +5,9 @@ using UnityEngine;
 public class PlayerMaterialManager : MonoBehaviour
 {
     private string BulletType;
-    public int BasicOres;
-    public int BasicOreBullet;
+    public float totalBasicOres;
+    
+    public int firstBulletCount, firstOreRefine = 5;
     // Start is called before the first frame update
     void Start()
     {
@@ -23,9 +24,25 @@ public class PlayerMaterialManager : MonoBehaviour
             switch(other.tag) 
             {
                 case "BasicOre":
-                BasicOres += 5;
+                totalBasicOres += 5;
                 break;
             }
         
+    }
+
+    public void RefineOre(string OreType)
+    {
+        switch (OreType)
+        {
+            case "FirstOre":
+            float BasicOreConversion = 5f;
+            totalBasicOres -= firstOreRefine;
+            
+            firstBulletCount = firstOreRefine * (int)BasicOreConversion;
+            
+            Debug.Log("Refined Ore");
+
+            break;
+        }
     }
 }

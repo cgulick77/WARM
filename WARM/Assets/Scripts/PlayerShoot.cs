@@ -4,12 +4,13 @@ using UnityEngine;
 
 public class PlayerShoot : MonoBehaviour
 {
-    public GameObject bullet;
+    public GameObject bullet, Ore1Bullet;
     private PlayerController playerController;
     private Inputs inputs;
     [SerializeField]
     private float rateOfFire;
     public GameObject bulletSpawn;
+    public bool RegularB, FirstB, SecondB, ThirdB;
 
     
     // Start is called before the first frame update
@@ -25,20 +26,38 @@ public class PlayerShoot : MonoBehaviour
     {
         if (inputs.shipActions.ShipShoot.triggered)
         {
-            //Debug.Log("SHOT");
-            StartCoroutine("ShootBasic");
+        //    if (RegularB == true)
+        //    {
+        //         //SetBulletTypes(true, false, false, false);
+        //          StartCoroutine(ShootBasic(bullet));
+        //    }
+
+        //    if (FirstB == true)
+        //    {    SetBulletTypes(false, true, false, false);
+        //          StartCoroutine(ShootBasic(Ore1Bullet));
+        //    }
+
+           
+           
         }
+        
     }
 
-   
-        
-        
-    
-
-    IEnumerator ShootBasic()
+  
+    IEnumerator ShootBasic(GameObject bulletType)
     {
         yield return new WaitForSeconds(rateOfFire);
-        Instantiate(bullet, bulletSpawn.transform.position, bulletSpawn.transform.rotation);
+        Instantiate(bulletType, bulletSpawn.transform.position, bulletSpawn.transform.rotation);
          
     }
+
+    void SetBulletTypes(bool Regular, bool FirstType, bool SecondType, bool ThirdType)
+    {
+        RegularB = false;
+        FirstB = false;
+        SecondB = false;
+        ThirdB = false;
+    }
+
+    
 }

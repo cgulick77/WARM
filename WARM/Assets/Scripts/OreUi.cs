@@ -8,16 +8,19 @@ public class OreUi : MonoBehaviour
     public GameObject uiActivaorId;
     public GameObject Indicator_1, Indicator_2, Indicator_3;
     private bool UiOn;
+    private PlayerMaterialManager playerMaterialManager;
     // Start is called before the first frame update
     void Start()
     {
         inputs = GetComponent<Inputs>();
+        playerMaterialManager = GetComponent<PlayerMaterialManager>();
         SetIndicatorsOff();
     }
 
     // Update is called once per frame
     void Update()
     {
+        //UI Activator
         if(inputs.shipActions.OpenShipUi.triggered)
         {
             if(uiActivaorId.activeSelf)
@@ -36,6 +39,7 @@ public class OreUi : MonoBehaviour
 
         if(UiOn == true)
         {
+            //Ore one checker
             if(inputs.shipActions.UiOre1.triggered)
         {
                 if(Indicator_1.activeSelf)
@@ -45,12 +49,11 @@ public class OreUi : MonoBehaviour
                 else
                 {
                     SetIndicators(true,false,false);
-
-                    // Indicator_1.SetActive(true);
-                    // Indicator_2.SetActive(false);
-                    // Indicator_3.SetActive(false);
+                    playerMaterialManager.RefineOre("FirstOre");
+                    Debug.Log("RefineFirstOre");
                 }
         }
+        //Ore two checker
         if(inputs.shipActions.UiOre2.triggered)
         {
                 if(Indicator_2.activeSelf)
@@ -60,9 +63,9 @@ public class OreUi : MonoBehaviour
                 else
                 {
                     SetIndicators(false,true,false);
-
                 }
         }
+        //Ore three chekcer
         if(inputs.shipActions.UiOre3.triggered)
         {
                 if(Indicator_3.activeSelf)
@@ -72,7 +75,6 @@ public class OreUi : MonoBehaviour
                 else
                 {
                     SetIndicators(false,false,true);
-                    
                 }
         }
         }
@@ -90,6 +92,7 @@ public class OreUi : MonoBehaviour
             Indicator_3.SetActive(false);
         }
 
+    //Sets Indicators active or inactive
     void SetIndicators(bool Ind1, bool Ind2, bool Ind3)
     {
         Indicator_1.SetActive(Ind1);
