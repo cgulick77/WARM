@@ -6,11 +6,13 @@ public class PlayerMaterialManager : MonoBehaviour
 {
     private string BulletType;
     public float totalBasicOres;
+    private PlayerShoot playerShoot;
     
     public int firstBulletCount, firstOreRefine = 5;
     // Start is called before the first frame update
     void Start()
     {
+        playerShoot = GetComponent<PlayerShoot>();
         
     }
 
@@ -30,17 +32,28 @@ public class PlayerMaterialManager : MonoBehaviour
         
     }
 
-    public void RefineOre(string OreType)
+    public void RefineOre(string OreType) 
     {
         switch (OreType)
         {
             case "FirstOre":
             float BasicOreConversion = 5f;
-            totalBasicOres -= firstOreRefine;
+            if (totalBasicOres > 0)
+            {
+                totalBasicOres -= firstOreRefine;
             
             firstBulletCount = firstOreRefine * (int)BasicOreConversion;
+            if (firstBulletCount > 0)
+            {
+                playerShoot.SetBulletTypes(false,true,false,false);
+                
+            }
+           
+
             
             Debug.Log("Refined Ore");
+            }
+
 
             break;
         }

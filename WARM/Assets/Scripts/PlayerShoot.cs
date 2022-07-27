@@ -11,6 +11,7 @@ public class PlayerShoot : MonoBehaviour
     private float rateOfFire;
     public GameObject bulletSpawn;
     public bool RegularB, FirstB, SecondB, ThirdB;
+    private PlayerMaterialManager playerMaterialManager;
 
     
     // Start is called before the first frame update
@@ -18,6 +19,8 @@ public class PlayerShoot : MonoBehaviour
     {
         playerController = GetComponent<PlayerController>();
         inputs = GetComponent<Inputs>();
+        playerMaterialManager = GetComponent<PlayerMaterialManager>();
+        SetBulletTypes(true,false,false,false);
         
     }
 
@@ -26,19 +29,25 @@ public class PlayerShoot : MonoBehaviour
     {
         if (inputs.shipActions.ShipShoot.triggered)
         {
-        //    if (RegularB == true)
-        //    {
-        //         //SetBulletTypes(true, false, false, false);
-        //          StartCoroutine(ShootBasic(bullet));
-        //    }
+           if (RegularB == true)
+           {
+                //SetBulletTypes(true, false, false, false);
+                 StartCoroutine(ShootBasic(bullet));
+           }
 
-        //    if (FirstB == true)
-        //    {    SetBulletTypes(false, true, false, false);
-        //          StartCoroutine(ShootBasic(Ore1Bullet));
-        //    }
+           if (FirstB == true)
+           {    //SetBulletTypes(false, true, false, false);
+                if (playerMaterialManager.firstBulletCount > 0)
+                {
+                    StartCoroutine(ShootBasic(Ore1Bullet));
+                    playerMaterialManager.firstBulletCount -= 5;
+                } 
+                else 
+                {
+                    SetBulletTypes(true,false,false,false);
+                }   
+           }
 
-           
-           
         }
         
     }
@@ -51,12 +60,12 @@ public class PlayerShoot : MonoBehaviour
          
     }
 
-    void SetBulletTypes(bool Regular, bool FirstType, bool SecondType, bool ThirdType)
+    public void SetBulletTypes(bool Regular, bool FirstType, bool SecondType, bool ThirdType)
     {
-        RegularB = false;
-        FirstB = false;
-        SecondB = false;
-        ThirdB = false;
+        RegularB = Regular;
+        FirstB = FirstType;
+        SecondB = SecondType;
+        ThirdB = ThirdType;
     }
 
     
