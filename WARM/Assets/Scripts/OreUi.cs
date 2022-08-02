@@ -20,13 +20,14 @@ public class OreUi : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //UI Activator
+        // ACTIVATES AND DEACTIVATES UI
         if(inputs.shipActions.OpenShipUi.triggered)
         {
             if(uiActivaorId.activeSelf)
             {
                  uiActivaorId.SetActive(false);
                  UiOn = true;
+                 
             }
             else
             {
@@ -39,44 +40,47 @@ public class OreUi : MonoBehaviour
 
         if(UiOn == true)
         {
-            //Ore one checker
-            if(inputs.shipActions.UiOre1.triggered)
-        {
-                if(Indicator_1.activeSelf)
+                //Ore one checker
+                    if(inputs.shipActions.UiOre1.triggered)
                 {
-                    Indicator_1.SetActive(false);
+                        if(Indicator_1.activeSelf)
+                        {
+                            Indicator_1.SetActive(false);
+                        }
+                        else
+                        {
+                            SetIndicators(true,false,false);
+                            playerMaterialManager.RefineOre("FirstOre");
+                            Debug.Log("RefineFirstOre");
+                            StartCoroutine(IndicatorsCooldown());
+                        }
                 }
-                else
+                //Ore two checker
+                if(inputs.shipActions.UiOre2.triggered)
                 {
-                    SetIndicators(true,false,false);
-                    playerMaterialManager.RefineOre("FirstOre");
-                    Debug.Log("RefineFirstOre");
+                        if(Indicator_2.activeSelf)
+                        {
+                            Indicator_2.SetActive(false);
+                        }
+                        else
+                        {
+                            SetIndicators(false,true,false);
+                            StartCoroutine(IndicatorsCooldown());
+                        }
                 }
-        }
-        //Ore two checker
-        if(inputs.shipActions.UiOre2.triggered)
-        {
-                if(Indicator_2.activeSelf)
+                //Ore three chekcer
+                if(inputs.shipActions.UiOre3.triggered)
                 {
-                    Indicator_2.SetActive(false);
+                        if(Indicator_3.activeSelf)
+                        {
+                            Indicator_3.SetActive(false);
+                        }
+                        else
+                        {
+                            SetIndicators(false,false,true);
+                            StartCoroutine(IndicatorsCooldown());
+                        }
                 }
-                else
-                {
-                    SetIndicators(false,true,false);
-                }
-        }
-        //Ore three chekcer
-        if(inputs.shipActions.UiOre3.triggered)
-        {
-                if(Indicator_3.activeSelf)
-                {
-                    Indicator_3.SetActive(false);
-                }
-                else
-                {
-                    SetIndicators(false,false,true);
-                }
-        }
         }
 
        
@@ -98,6 +102,13 @@ public class OreUi : MonoBehaviour
         Indicator_1.SetActive(Ind1);
         Indicator_2.SetActive(Ind2);
         Indicator_3.SetActive(Ind3);
+    }
+
+    IEnumerator IndicatorsCooldown()
+    {
+        yield return new WaitForSeconds(.3f);
+        SetIndicatorsOff();
+        StopCoroutine(IndicatorsCooldown());
     }
     
 }

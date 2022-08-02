@@ -2466,8 +2466,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bullet: {fileID: 1918645405368993729, guid: df236bd7315d5aa48aac6ace174077d4, type: 3}
+  Ore1Bullet: {fileID: 7649029113785159324, guid: 338e8e6edd363cd4aa2875fb684a2bb9, type: 3}
   rateOfFire: 0
   bulletSpawn: {fileID: 1230379929}
+  RegularB: 0
+  FirstB: 0
+  SecondB: 0
+  ThirdB: 0
 --- !u!114 &1740860091
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2480,8 +2485,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a77cca18a8fd2fd409ad4d8e713d5ac9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  BasicOres: 0
-  BasicOreBullet: 0
+  totalBasicOres: 0
+  firstBulletCount: 0
+  firstOreRefine: 5
 --- !u!114 &1740860092
 MonoBehaviour:
   m_ObjectHideFlags: 0
