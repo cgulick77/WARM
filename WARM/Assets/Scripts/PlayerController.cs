@@ -8,31 +8,35 @@ public class PlayerController : MonoBehaviour
 {
     
     private CharacterController playerController;
-    private Vector3 playerVelocity;
+    private Vector2 playerVelocity;
     public float playerSpeed;
     public GameObject shipOuter;
 
     public float generalSpeed;
+    private Rigidbody2D playerRb;
 
     void Start() 
     {
         playerController = GetComponent<CharacterController>();
+        playerRb = GetComponent<Rigidbody2D>();
     }
 
 
     // Update is called once per frame
     void Update()
     {
-      playerController.Move(Vector3.down * generalSpeed * Time.deltaTime);
+        
+      //playerController.Move(Vector3.down * generalSpeed * Time.deltaTime);
     }
 
     public void MoveShip(Vector2 input)
     {
-        Vector3 moveDirection =Vector3.zero;
+        Vector2 moveDirection =Vector2.zero;
         moveDirection.x = input.x;
         moveDirection.y = input.y;
 
-        playerController.Move(transform.TransformDirection(moveDirection * playerSpeed * Time.deltaTime));
+        playerRb.velocity = moveDirection * playerSpeed;
+        //playerController.Move(transform.TransformDirection(moveDirection * playerSpeed * Time.deltaTime));
     }
 
    
