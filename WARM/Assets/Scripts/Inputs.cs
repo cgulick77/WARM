@@ -8,6 +8,7 @@ public class Inputs : MonoBehaviour
     private PlayerInput playerInput;
     public PlayerInput.PlayerShipActions shipActions;
     private PlayerController playerController;
+    //Camera camera;
     
      void Awake() 
     {
@@ -19,7 +20,7 @@ public class Inputs : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        playerController.MoveShip(shipActions.ShipMovement.ReadValue<Vector2>());
+        playerController.MoveShip(shipActions.ShipMovement.ReadValue<Vector2>(), shipActions.ShipAim.ReadValue<Vector2>());
         
         
     }

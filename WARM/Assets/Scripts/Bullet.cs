@@ -16,7 +16,8 @@ public class Bullet : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-       bulletRb.velocity = new Vector2(0.0f, bulletSpeed);
+       //bulletRb.velocity = new Vector2(0.0f, bulletSpeed);
+       bulletRb.AddForce(Vector2.up * bulletSpeed);
        StartCoroutine("bulletDestroy");
     }
 
