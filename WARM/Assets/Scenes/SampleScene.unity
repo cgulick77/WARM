@@ -5526,7 +5526,6 @@ MonoBehaviour:
   playerSpeed: 20
   shipOuter: {fileID: 361294400}
   generalSpeed: 0
-  camera: {fileID: 963194227}
 --- !u!114 &1740860087
 MonoBehaviour:
   m_ObjectHideFlags: 0
