@@ -14,7 +14,7 @@ public class PlayerController : MonoBehaviour
 
     public float generalSpeed;
     private Rigidbody2D playerRb;
-    [SerializeField] Camera camera;
+    //[SerializeField] Camera camera;
 
     void Start() 
     {
@@ -30,7 +30,7 @@ public class PlayerController : MonoBehaviour
       //playerController.Move(Vector3.down * generalSpeed * Time.deltaTime);
     }
 
-    public void MoveShip(Vector2 input, Vector2 mousePos)
+    public void MoveShip(Vector2 input)
     {
         Vector2 moveDirection =Vector2.zero;
         moveDirection.x = input.x;
@@ -38,9 +38,20 @@ public class PlayerController : MonoBehaviour
 
         playerRb.velocity = moveDirection * playerSpeed;
 
-        mousePos = camera.ScreenToWorldPoint(mousePos);
+        // mousePos = camera.ScreenToWorldPoint(mousePos);
 
-        Vector2 facingDirection = mousePos - playerRb.position;
+        // Vector2 facingDirection = mousePos - playerRb.position;
+
+        // float angle = Mathf.Atan2(facingDirection.y, facingDirection.x) * Mathf.Rad2Deg;
+        // playerRb.MoveRotation(angle);
+        //playerController.Move(transform.TransformDirection(moveDirection * playerSpeed * Time.deltaTime));
+    }
+
+    public void AimShip(Vector2 mousePos)
+    {
+         //mousePos = camera.ScreenToWorldPoint(mousePos);
+
+       Vector2 facingDirection = mousePos - playerRb.position;
 
         float angle = Mathf.Atan2(facingDirection.y, facingDirection.x) * Mathf.Rad2Deg;
         playerRb.MoveRotation(angle);

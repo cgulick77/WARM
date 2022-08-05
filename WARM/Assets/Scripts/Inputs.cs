@@ -8,7 +8,8 @@ public class Inputs : MonoBehaviour
     private PlayerInput playerInput;
     public PlayerInput.PlayerShipActions shipActions;
     private PlayerController playerController;
-    //Camera camera;
+    private Vector2 mousePos;
+    [SerializeField]Camera camera;
     
      void Awake() 
     {
@@ -20,7 +21,7 @@ public class Inputs : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        playerController.MoveShip(shipActions.ShipMovement.ReadValue<Vector2>(), shipActions.ShipAim.ReadValue<Vector2>());
+        playerController.MoveShip(shipActions.ShipMovement.ReadValue<Vector2>());
         
         
     }
@@ -32,10 +33,17 @@ public class Inputs : MonoBehaviour
     {
         
         shipActions.Enable();
+        shipActions.ShipAim.performed += OnMousePos;
     }
 
     private void OnDisable() 
     {
         shipActions.Disable();
+    }
+
+    private void OnMousePos(InputAction.CallbackContext context)
+    {
+        mousePos = camera.ScreenToWorldPoint(context.ReadValue<Vector2>());
+        playerController.AimShip(mousePos);
     }
 }
