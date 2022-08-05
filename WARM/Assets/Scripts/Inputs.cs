@@ -9,7 +9,7 @@ public class Inputs : MonoBehaviour
     public PlayerInput.PlayerShipActions shipActions;
     private PlayerController playerController;
     private Vector2 mousePos;
-    [SerializeField]Camera camera;
+   
     
      void Awake() 
     {
@@ -33,7 +33,7 @@ public class Inputs : MonoBehaviour
     {
         
         shipActions.Enable();
-        shipActions.ShipAim.performed += OnMousePos;
+        // shipActions.ShipAim.performed += OnMousePos;
     }
 
     private void OnDisable() 
@@ -41,9 +41,9 @@ public class Inputs : MonoBehaviour
         shipActions.Disable();
     }
 
-    private void OnMousePos(InputAction.CallbackContext context)
-    {
-        mousePos = camera.ScreenToWorldPoint(context.ReadValue<Vector2>());
-        playerController.AimShip(mousePos);
-    }
+    // private void OnMousePos(InputAction.CallbackContext context)
+    // {
+    //     mousePos = camera.ScreenToWorldPoint(context.ReadValue<Vector2>());
+    //     playerController.AimShip(mousePos);
+    // }
 }
